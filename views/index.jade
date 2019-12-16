@@ -23,7 +23,7 @@ html
     p
       script(type='text/javascript').
         $(document).ready(function() {
-          var json = $.getJSON("#{path}", function(data){
+              var json = $.getJSON("#{path}", function(data){
               console.log(data.output.length);
               data.output.sort(function (a, b) {
                 return a.keyword < b.keyword ? -1 : a.keyword > b.keyword ? 1 : 0;
@@ -52,9 +52,15 @@ html
                       object[index++] = data.output[i];
                       if(i == last_index || data.output[i].keyword != data.output[i+1].keyword) {
                         var id = data.output[i].keyword;
-                        if(data.output[i].keyword == "#{keyword}") {
-                          $('#navtab').append("<li class='active test'><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
-                          $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">");
+                        if(isHighlightKeyword(data.output[i].keyword)) {
+                          if(!iskeywordExist) {
+                            $('#navtab').append("<li class='active red'><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
+                            $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">");
+                          } else {
+                            $('#navtab').append("<li class='red'><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
+                            $('#list').append("<div id='"+ id + "' class='tab-pane fade '"+ ">");
+                          }
+                          iskeywordExist = true;
                         } else {
                           $('#navtab').append("<li><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
                           $('#list').append("<div id='"+ id + "' class='tab-pane fade'"+ ">");
@@ -67,3 +73,14 @@ html
               }
             });
           });
+          function isHighlightKeyword(keyword){
+            var obj = "#{keyword}";
+            obj = obj.split(',');
+            console.log(obj);
+            for(var i=0; i < obj.length;++i){
+              if(keyword == obj[i]){
+                return true;
+              }
+            }
+            return false;
+          }
