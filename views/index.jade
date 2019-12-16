@@ -24,14 +24,30 @@ html
         $(document).ready(function() {
           var json = $.getJSON("#{path}", function(data){
               console.log(data.output.length);
+              data.output.sort(function (a, b) {
+                return a.keyword < b.keyword ? -1 : a.keyword > b.keyword ? 1 : 0;
+              });
+
               $('#navtab').append("<li class='active'><a data-toggle='tab' href='#total'>Total</a></li>");
               $('#list').append("<div id='total' class='tab-pane fade in active'>")
-              $("#total").jJsonViewer(data.output);
-              for(var i = 0;i<data.output.length;++i){
-                    var id = "keyword"+i;
-                    $('#navtab').append("<li><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
-                    $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">")
-                    $("#"+id).jJsonViewer(data.output[i]);
-                  }
-                });
-              });
+              if(data.output.length == 0){
+                data.output[0] = {Error:'Interest from engine is empty'};
+                $("#total").jJsonViewer(data.output);
+              } else {
+                $("#total").jJsonViewer(data.output);
+                var last_index = data.output.length - 1;
+                var object = [];
+                var index = 0;
+                for(var i = 0;i < data.output.length; ++i){
+                      var id = "keyword"+i;
+                      object[index++] = data.output[i];
+                      if(i == last_index || data.output[i].keyword != data.output[i+1].keyword) {
+                        $('#navtab').append("<li><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
+                        $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">")
+                        $("#"+id).jJsonViewer(object);
+                        index = 0;
+                      }
+                    }
+              }
+            });
+          });
