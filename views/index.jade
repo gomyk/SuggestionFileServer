@@ -54,18 +54,18 @@ html
                         var id = data.output[i].keyword.replace(/_/gi,' ');
                         if(isHighlightKeyword(id)) {
                           if(!iskeywordExist) {
-                            $('#navtab').append("<li class='active red'><a data-toggle='tab' href='#"+id +"'>"+id +"</a></li>");
-                            $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">");
+                            $('#navtab').append("<li class='active red'><a data-toggle='tab' href='#"+data.output[i].keyword +"'>"+id +"</a></li>");
+                            $('#list').append("<div id='"+ data.output[i].keyword + "' class='tab-pane fade in active'"+ ">");
                           } else {
-                            $('#navtab').append("<li class='red'><a data-toggle='tab' href='#"+id +"'>"+id +"</a></li>");
-                            $('#list').append("<div id='"+ id + "' class='tab-pane fade '"+ ">");
+                            $('#navtab').append("<li class='red'><a data-toggle='tab' href='#"+data.output[i].keyword +"'>"+id +"</a></li>");
+                            $('#list').append("<div id='"+ data.output[i].keyword + "' class='tab-pane fade '"+ ">");
                           }
                           iskeywordExist = true;
                         } else {
-                          $('#navtab').append("<li><a data-toggle='tab' href='#"+id +"'>"+ id +"</a></li>");
-                          $('#list').append("<div id='"+ id + "' class='tab-pane fade'"+ ">");
+                          $('#navtab').append("<li><a data-toggle='tab' href='#"+data.output[i].keyword +"'>"+ id +"</a></li>");
+                          $('#list').append("<div id='"+ data.output[i].keyword + "' class='tab-pane fade'"+ ">");
                         }
-                        $("#"+id).jJsonViewer(object);
+                        $("#"+data.output[i].keyword).jJsonViewer(object);
                         index = 0;
                         object = [];
                       }
