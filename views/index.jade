@@ -28,8 +28,15 @@ html
               data.output.sort(function (a, b) {
                 return a.keyword < b.keyword ? -1 : a.keyword > b.keyword ? 1 : 0;
               });
-              $('#navtab').append("<li><a data-toggle='tab' href='#total'>Total</a></li>");
-              $('#list').append("<div id='total' class='tab-pane fade in'>")
+              if("#{keyword}" == "total") {
+                $('#navtab').append("<li class='active'><a data-toggle='tab' href='#total'>Total</a></li>");
+                $('#list').append("<div id='total' class='tab-pane fade in active'>")
+              } else {
+                $('#navtab').append("<li><a data-toggle='tab' href='#total'>Total</a></li>");
+                  $('#list').append("<div id='total' class='tab-pane fade'>")
+              }
+
+
 
               if(data.output.length == 0){
                 $("#fixHeader").append("<h3> Error : Script output is empty</h3>")
