@@ -32,6 +32,7 @@ html
               $('#list').append("<div id='total' class='tab-pane fade in'>")
 
               if(data.output.length == 0){
+                $("#fixHeader").append("<h3> Error : Script output is empty</h3>")
                 data.output[0] = {Error:'Interest from engine is empty'};
                 $("#total").jJsonViewer(data.output);
               } else {
