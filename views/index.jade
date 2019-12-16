@@ -51,18 +51,18 @@ html
                 for(var i = 0;i < data.output.length; ++i){
                       object[index++] = data.output[i];
                       if(i == last_index || data.output[i].keyword != data.output[i+1].keyword) {
-                        var id = data.output[i].keyword;
+                        var id = data.output[i].keyword.replace(/_/gi,' ');
                         if(isHighlightKeyword(data.output[i].keyword)) {
                           if(!iskeywordExist) {
-                            $('#navtab').append("<li class='active red'><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
+                            $('#navtab').append("<li class='active red'><a data-toggle='tab' href='#"+id +"'>"+id +"</a></li>");
                             $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">");
                           } else {
-                            $('#navtab').append("<li class='red'><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
+                            $('#navtab').append("<li class='red'><a data-toggle='tab' href='#"+id +"'>"+id +"</a></li>");
                             $('#list').append("<div id='"+ id + "' class='tab-pane fade '"+ ">");
                           }
                           iskeywordExist = true;
                         } else {
-                          $('#navtab').append("<li><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
+                          $('#navtab').append("<li><a data-toggle='tab' href='#"+id +"'>"+ id +"</a></li>");
                           $('#list').append("<div id='"+ id + "' class='tab-pane fade'"+ ">");
                         }
                         $("#"+id).jJsonViewer(object);
