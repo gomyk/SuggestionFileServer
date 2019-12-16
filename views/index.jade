@@ -44,7 +44,7 @@ html
                       if(i == last_index || data.output[i].keyword != data.output[i+1].keyword) {
                         var id = data.output[i].keyword;
                         if(data.output[i].keyword == "#{keyword}") {
-                          $('#navtab').append("<li class='active'><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
+                          $('#navtab').append("<li class='active'><a data-toggle='tab' href='#"+id +"' background='#399393'>"+data.output[i].keyword +"</a></li>");
                           $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">");
                         } else {
                           $('#navtab').append("<li><a data-toggle='tab' href='#"+id +"'>"+data.output[i].keyword +"</a></li>");
@@ -52,6 +52,7 @@ html
                         }
                         $("#"+id).jJsonViewer(object);
                         index = 0;
+                        object = [];
                       }
                     }
               }
