@@ -52,7 +52,7 @@ html
                       object[index++] = data.output[i];
                       if(i == last_index || data.output[i].keyword != data.output[i+1].keyword) {
                         var id = data.output[i].keyword.replace(/_/gi,' ');
-                        if(isHighlightKeyword(data.output[i].keyword)) {
+                        if(isHighlightKeyword(id)) {
                           if(!iskeywordExist) {
                             $('#navtab').append("<li class='active red'><a data-toggle='tab' href='#"+id +"'>"+id +"</a></li>");
                             $('#list').append("<div id='"+ id + "' class='tab-pane fade in active'"+ ">");
