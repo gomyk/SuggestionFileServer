@@ -10,8 +10,12 @@ router.get('/', function(req, res, next) {
     res.send(500, 'Do not request without query');
   } else {
       if(fs.existsSync('../SuggestionDashBoard'+req.query.path)) {
+        if(req.query.keyword == undefined) {
+          req.query.keyword = 'Total';
+        }
         res.render('index',{
           title:"title",
+          keyword:req.query.keyword,
           path:req.query.path,
           link:req.query.link});
       } else {
