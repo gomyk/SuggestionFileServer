@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   } else {
       if(fs.existsSync('../SuggestionDashBoard'+req.query.path)) {
         if(req.query.keyword == undefined) {
-          req.query.keyword = 'Total';
+          req.query.keyword = 'total';
         }
         res.render('index',{
           title:"title",
