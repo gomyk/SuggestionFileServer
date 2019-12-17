@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var https = require('https');
 var indexRouter = require('./routes/index');
-var uploadRouter = require('./routes/upload');
 var serveIndex = require('serve-index');
 var serveStatic = require('serve-static');
 
@@ -33,7 +32,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 
 app.use('/', indexRouter);
-app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
