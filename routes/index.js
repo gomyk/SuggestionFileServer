@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
         if(req.query.keyword == undefined) {
           req.query.keyword = 'total';
         }
-        res.render('index',{
+        res.render('index.html',{
           title:"title",
           keyword:req.query.keyword,
           path:req.query.path,
