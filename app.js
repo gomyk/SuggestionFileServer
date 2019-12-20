@@ -26,7 +26,6 @@ app.engine('html',require('ejs').renderFile);
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/views'));
 app.use('/uploads', serveIndex('../SuggestionDashBoard/uploads',{'icon':true}));
 app.use('/uploads', serveStatic('../SuggestionDashBoard/uploads'));
 app.use(bodyParser.json({limit: '50mb'}));

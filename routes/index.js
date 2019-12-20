@@ -26,8 +26,5 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.get('/dashboard', function(req, res, next) {
-  res.render('index.html');
-});
 
 module.exports = router;
