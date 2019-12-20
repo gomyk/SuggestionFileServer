@@ -13,17 +13,18 @@ router.get('/', function(req, res, next) {
         if(req.query.keyword == undefined) {
           req.query.keyword = 'total';
         }
-        res.render('index.html',{
+        res.render('jsontree.html',{
           title:"title",
           keyword:req.query.keyword,
           path:req.query.path,
           link:req.query.link});
       } else {
-        res.render('error',{
+        res.render('error.html',{
           message:'File not found',
           detail:'It may take some time for a file to be created'});
       }
   }
 });
+
 
 module.exports = router;
