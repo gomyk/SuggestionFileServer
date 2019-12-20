@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
           path:req.query.path,
           link:req.query.link});
       } else {
-        res.render('error',{
+        res.render('error.html',{
           message:'File not found',
           detail:'It may take some time for a file to be created'});
       }
