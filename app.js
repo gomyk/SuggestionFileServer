@@ -17,6 +17,16 @@ if (process.argv.length < 3) {
 }
 
 var app = express();
+
+var db = mongoose.connection;
+
+db.on('error',console.error);
+db.once('open',function(){
+  console.log("Connected to mongo server");
+});
+
+mongoose.connect('mongodb://localhost:27017/logging');
+
 const PORT = 3001;
 
 // view engine setup
