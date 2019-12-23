@@ -9,6 +9,7 @@ var https = require('https');
 var indexRouter = require('./routes/index');
 var serveIndex = require('serve-index');
 var serveStatic = require('serve-static');
+var mongoose = require('mongoose');
 
 if (process.argv.length < 3) {
   console.log("Usage: npm start [url]\n");
